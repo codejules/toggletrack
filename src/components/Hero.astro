@@ -1,0 +1,32 @@
+---
+import Section from "./Section.astro";
+import IconVideo from "@/assets/Video.astro";
+---
+
+<Section class="bg-[#2d1238]">
+    <div class="max-w-screen-xl mx-auto py-20 flex flex-col gap-12">
+        <h1 class="text-6xl text-center font-light text-white px-56">
+            Where <span class="text-pink-400 font-semibold"> teams </span>
+            and time tracking <span class="text-pink-400 font-semibold"
+                >data</span
+            > meet
+        </h1>
+        <p class="text-2xl text-center text-white px-44">
+            The only time tracking software that builds custom reports from your
+            team's time data to maximize productivity and revenue.
+        </p>
+    </div>
+    <div class="flex flex-row justify-center items-center gap-9">
+        <button
+            class="bg-pink-400 px-6 py-4 rounded-full text-white hover:bg-slate-600"
+            >Start tracking for free</button
+        >
+        <button
+            class="bg-slate-800 px-6 py-4 rounded-full text-white flex flex-row items-center gap-3 hover:bg-slate-700"
+            ><IconVideo class="size-6" /> See how it works</button
+        >
+    </div>
+    <div class="max-w-screen-2xl mx-auto py-24">
+        <img class="px-32" src="./banner-image.webp" title="" alt="" />
+    </div>
+</Section>

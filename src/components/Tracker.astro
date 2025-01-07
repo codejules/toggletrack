@@ -1,0 +1,77 @@
+---
+import Section from "./Section.astro";
+import { TABS } from "@/types/tabs";
+
+const title: string =
+    "The time tracker that achieves 100% user adoption in your team";
+const description: string =
+    "Time tracking is a chore, which is why we built Toggl Track differently.";
+---
+
+<Section>
+    <div class="max-w-screen-xl mx-auto flex flex-col gap-8 py-16">
+        <h2 class="text-4xl text-center font-semibold text-slate-600 px-44">
+            {title.split("100%").map((part, i) => (
+                i === 0 ? part : <><span class="text-pink-400 font-semibold">100%</span>{part}</>
+            ))}
+        </h2>
+        <p class="text-center text-xl">
+            {description}
+        </p>
+        <div class="grid grid-cols-2 gap-5">
+            <div class="mb-4 dark:border-gray-700">
+                <ul
+                    class="flex flex-col justify-start text-sm font-medium"
+                    id="default-tab"
+                    data-tabs-toggle="#default-tab-content"
+                    role="tablist"
+                >
+                    {
+                        TABS.map(
+                            ({
+                                id,
+                                dataTabsTarget,
+                                ariaControls,
+                                title,
+                                description,
+                            }) => (
+                                <li class="me-2" role="presentation">
+                                    <button
+                                        class="p-4 border-l-2 text-left text-slate-600 flex flex-col gap-4 hover:text-slate-700"
+                                        type="button"
+                                        role="tab"
+                                        id={id}
+                                        data-tabs-target={dataTabsTarget}
+                                        aria-controls={ariaControls}
+                                        aria-selected="false"
+                                    >
+                                        <span class="text-2xl text-pink-400">
+                                            {title}
+                                        </span>
+                                        <p class="text-sm">{description}</p>
+                                    </button>
+                                </li>
+                            ),
+                        )
+                    }
+                </ul>
+            </div>
+            <div id="default-tab-content">
+                {
+                    TABS.map(({ ariaControls, id, url, imgAlt, imgTitle }) => (
+                        <div
+                            class="hidden"
+                            id={ariaControls}
+                            role="tabpanel"
+                            aria-labelledby={id}
+                        >
+                            <picture class="absolute -mr-8">
+                                <img src={url} alt={imgAlt} title={imgTitle} />
+                            </picture>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </div>
+</Section>
