@@ -38,6 +38,7 @@ const CARD = [
 
 <Section>
     <div
+        id="card"
         class="max-w-screen-xl mx-auto flex flex-row justify-center gap-8 py-16"
     >
         {
@@ -82,3 +83,21 @@ const CARD = [
         }
     </div>
 </Section>
+
+<style>
+    #card {
+        animation: entry-card 3s linear both;
+        animation-range: entry 10% cover 40%;
+        animation-timeline: view();
+    }
+    @keyframes entry-card {
+        0% {
+            opacity: 0;
+            transform: translate(0, -100px);
+        }
+        100% {
+            opacity: 1;
+            transform: translate(0, 0); 
+        }
+    }
+</style>
