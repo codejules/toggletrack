@@ -36,10 +36,10 @@ const CARD = [
 ];
 ---
 
-<Section>
+<Section class="max-w-screen-xl mx-auto">
     <div
         id="card"
-        class="max-w-screen-xl mx-auto flex flex-row justify-center gap-8 py-16"
+        class="grid md:grid-cols-2 lg:grid-cols-3 md:px-4 gap-4 xl:gap-0 py-16"
     >
         {
             CARD.map(
@@ -52,21 +52,21 @@ const CARD = [
                     bgColor,
                     readMore,
                 }) => (
-                    <a href={url} target="_blank">
+                    <a class="flex justify-center" href={url} target="_blank">
                         <div
                             class={`h-full max-w-sm rounded-lg flex flex-col gap-6 hover:scale-105 transition ease-in duration-300 cursor-pointer ${bgColor}`}
                         >
                             <div class="text-center flex flex-col gap-3 pt-8">
-                                <h2 class="mb-2 text-6xl font-semibold tracking-tight text-gray-900 dark:text-white">
+                                <h2 class="mb-2 text-5xl lg:text-6xl font-semibold tracking-tight text-gray-900 dark:text-white">
                                     {title}
                                 </h2>
                                 <p class="px-12 font-light">{description}</p>
                             </div>
-                            <div class="px-6">
-                                <img class="rounded-2xl" src={image} alt="" />
+                            <div class="px-6 hidden lg:block">
+                                <img class="rounded-2xl lg:block" src={image} alt="" />
                             </div>
-                            <div class="px-5 pt-5 flex-grow">
-                                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                            <div class="px-5 lg:pt-5 flex-grow">
+                                <p class="text-center lg:text-left mb-3 font-normal text-gray-700 dark:text-gray-400">
                                     {paragraph}
                                 </p>
                             </div>
@@ -85,19 +85,28 @@ const CARD = [
 </Section>
 
 <style>
-    #card {
-        animation: entry-card 3s linear both;
-        animation-range: entry 10% cover 40%;
-        animation-timeline: view();
-    }
-    @keyframes entry-card {
-        0% {
-            opacity: 0;
-            transform: translate(0, -100px);
+    @media (min-width: 768px) and (max-width: 1023px) {
+        #card a:nth-child(3) {
+            grid-column: 1 / -1;
+            justify-self: center;
         }
-        100% {
-            opacity: 1;
-            transform: translate(0, 0); 
+    }
+
+    @media (min-width: 1024px) {
+        #card {
+            animation: entry-card 3s linear both;
+            animation-range: entry 10% cover 40%;
+            animation-timeline: view();
+        }
+        @keyframes entry-card {
+            0% {
+                opacity: 0;
+                transform: translate(0, -100px);
+            }
+            100% {
+                opacity: 1;
+                transform: translate(0, 0);
+            }
         }
     }
 </style>

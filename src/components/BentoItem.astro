@@ -1,0 +1,72 @@
+---
+const { title, description, id, image } = Astro.props;
+---
+
+<article
+    id={id}
+    class={`
+    ${Astro.props.class}
+    lg:col-span-5
+    relative rounded-xl
+    border border-black/10
+    shadow-inner shadow-white/10
+    w-full
+    `}
+>
+    <div class="flex flex-col h-full justify-between">
+        <div class="flex flex-col gap-2 p-6">
+            <p
+                class="mt-2 text-lg font-medium tracking-tight text-gray-950 max-lg:text-center"
+            >
+                {title}
+            </p>
+            <p class="mt-2 max-w-lg text-sm/6 text-gray-600 max-lg:text-center">
+                {description}
+            </p>
+        </div>
+        <div class="px-16 w-full pb-4 lg:pb-12">
+            <img
+                class="max-h-[13rem] rounded object-cover object-top w-full"
+                src={image}
+                alt=""
+            />
+        </div>
+    </div>
+</article>
+
+<style>
+    @media (min-width: 1024px) {
+        #mobile,
+        #security {
+            animation: card-mobile linear both;
+            animation-range: entry 10% cover 40%;
+            animation-timeline: view();
+        }
+        #powerful,
+        #performance {
+            animation: card-powerful linear both;
+            animation-range: entry 10% cover 40%;
+            animation-timeline: view();
+        }
+        @keyframes card-mobile {
+            0% {
+                opacity: 0;
+                transform: translate(-200px, 0);
+            }
+            100% {
+                opacity: 1;
+                transform: translate(0, 0);
+            }
+        }
+        @keyframes card-powerful {
+            0% {
+                opacity: 0;
+                transform: translate(200px, 0);
+            }
+            100% {
+                opacity: 1;
+                transform: translate(0, 0);
+            }
+        }
+    }
+</style>
