@@ -1,5 +1,6 @@
-import type { APIRoute } from 'astro';
+/* import type { APIRoute } from 'astro';
 import { contactSchema } from '@/schemas/contact';
+const accessKey = import.meta.env.WEB3FORMS_ACCESS_KEY;
 
 export const post: APIRoute = async ({ request }) => {
   try {
@@ -15,7 +16,7 @@ export const post: APIRoute = async ({ request }) => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        access_key: 'ecfd492c-5690-4951-9be2-b678fecf204e', // Use the key here securely
+        access_key: {accessKey}, // Use the key here securely
         ...formData,
       }),
     });
@@ -29,4 +30,4 @@ export const post: APIRoute = async ({ request }) => {
     console.error(error);
     return new Response(JSON.stringify({ error: 'Internal Server Error' }), { status: 500 });
   }
-};
+}; */
