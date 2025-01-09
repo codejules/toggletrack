@@ -1,5 +1,6 @@
 ---
-import { contactSchema } from '@/schemas/contact';
+/* import { contactSchema } from '@/schemas/contact';
+const accessKey = import.meta.env.WEB3FORMS_ACCESS_KEY;
 
 type ContactFormProps = {
     firstName: string;
@@ -7,7 +8,7 @@ type ContactFormProps = {
     email: string;
     message: string;
     botcheck: string; // Hidden field to catch bots
-};
+}; */
 
 /* const submitForm = async (formData: ContactFormProps) => {
     try {
@@ -20,7 +21,7 @@ type ContactFormProps = {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                access_key: "ecfd492c-5690-4951-9be2-b678fecf204e",
+                access_key: accessKey,
                 ...formData,
             }),
         });
@@ -36,7 +37,7 @@ type ContactFormProps = {
     }
 }; */
 
-const submitForm = async (formData: ContactFormProps) => {
+/* const submitForm = async (formData: ContactFormProps) => {
     try {
         const response = await fetch("/api/contact", {
             method: "POST",
@@ -55,7 +56,7 @@ const submitForm = async (formData: ContactFormProps) => {
         console.error(error);
         alert("There was an error submitting the form.");
     }
-};
+}; */
 ---
 
 <div class="p-8 mx-auto max-w-screen-md bg-white rounded-2xl">
@@ -66,18 +67,6 @@ const submitForm = async (formData: ContactFormProps) => {
         action="/api/contact"
         method="POST"
         class="mx-auto max-w-xl pt-6"
-        on:submit|preventDefault={(event: {
-            target: HTMLFormElement | undefined;
-        }) => {
-            const formData = new FormData(event.target);
-            submitForm({
-                firstName: formData.get("first-name") as string,
-                lastName: formData.get("last-name") as string,
-                email: formData.get("email") as string,
-                message: formData.get("message") as string,
-                botcheck: formData.get("botcheck") as string, // Honeypot validation
-            });
-        }}
     >
         <input
             type="hidden"

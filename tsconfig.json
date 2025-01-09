@@ -12,6 +12,9 @@
     "paths": {
       "@/*": [
         "./src/*"
+      ],
+      "@/schemas/*": [
+        "src/schemas/*"
       ]
     }
   }
