@@ -5,7 +5,7 @@ export const contactSchema = z.object({
   lastName: z.string().min(1, 'Last name is required'),
   email: z.string().email('Invalid email address'),
   message: z.string().min(10, 'Message must be at least 10 characters long'),
-  honeypot: z.string().max(0, 'Spam detected'), // Honeypot validation
+  botcheck: z.string().max(0, 'Spam detected'), // Honeypot validation
 });
 
 export type ContactFormData = z.infer<typeof contactSchema>;

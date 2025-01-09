@@ -6,7 +6,7 @@ type ContactFormProps = {
     lastName: string;
     email: string;
     message: string;
-    honeypot: string; // Hidden field to catch bots
+    botcheck: string; // Hidden field to catch bots
 };
 
 /* const submitForm = async (formData: ContactFormProps) => {
@@ -75,7 +75,7 @@ const submitForm = async (formData: ContactFormProps) => {
                 lastName: formData.get("last-name") as string,
                 email: formData.get("email") as string,
                 message: formData.get("message") as string,
-                honeypot: formData.get("botcheck") as string, // Honeypot validation
+                botcheck: formData.get("botcheck") as string, // Honeypot validation
             });
         }}
     >
