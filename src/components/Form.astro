@@ -1,5 +1,5 @@
 ---
-/* import { contactSchema } from '@/schemas/contact';
+import { contactSchema } from '@/schemas/contact';
 const accessKey = import.meta.env.WEB3FORMS_ACCESS_KEY;
 
 type ContactFormProps = {
@@ -8,9 +8,9 @@ type ContactFormProps = {
     email: string;
     message: string;
     botcheck: string; // Hidden field to catch bots
-}; */
+};
 
-/* const submitForm = async (formData: ContactFormProps) => {
+const submitForm = async (formData: ContactFormProps) => {
     try {
         // Validamos los datos con el esquema Zod
         contactSchema.parse(formData);
@@ -35,7 +35,7 @@ type ContactFormProps = {
         console.error(error);
         alert("There was an error submitting the form.");
     }
-}; */
+};
 
 /* const submitForm = async (formData: ContactFormProps) => {
     try {
@@ -64,9 +64,21 @@ type ContactFormProps = {
         Simply dummy text of the printing and typesetting industry.
     </h3>
     <form
-        action="/api/contact"
+        action="https://api.web3forms.com/submit"
         method="POST"
         class="mx-auto max-w-xl pt-6"
+        on:submit|preventDefault={(event: {
+            target: HTMLFormElement | undefined;
+        }) => {
+            const formData = new FormData(event.target);
+            submitForm({
+                firstName: formData.get("first-name") as string,
+                lastName: formData.get("last-name") as string,
+                email: formData.get("email") as string,
+                message: formData.get("message") as string,
+                botcheck: formData.get("botcheck") as string, // Honeypot validation
+            });
+        }}
     >
         <input
             type="hidden"
