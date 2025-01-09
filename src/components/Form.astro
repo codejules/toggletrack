@@ -38,7 +38,7 @@ type ContactFormProps = {
 
 const submitForm = async (formData: ContactFormProps) => {
     try {
-        const response = await fetch("../pages/api/contact", {
+        const response = await fetch("/api/contact", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -63,7 +63,7 @@ const submitForm = async (formData: ContactFormProps) => {
         Simply dummy text of the printing and typesetting industry.
     </h3>
     <form
-        action="https://api.web3forms.com/submit"
+        action="/api/contact"
         method="POST"
         class="mx-auto max-w-xl pt-6"
         on:submit|preventDefault={(event: {

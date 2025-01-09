@@ -1,8 +1,8 @@
-/* import type { APIRoute } from 'astro';
+import type { APIRoute } from 'astro';
 import { contactSchema } from '@/schemas/contact';
 const accessKey = import.meta.env.WEB3FORMS_ACCESS_KEY;
 
-export const post: APIRoute = async ({ request }) => {
+export const POST: APIRoute = async ({ request }) => {
   try {
     const formData = await request.json();
 
@@ -30,4 +30,4 @@ export const post: APIRoute = async ({ request }) => {
     console.error(error);
     return new Response(JSON.stringify({ error: 'Internal Server Error' }), { status: 500 });
   }
-}; */
+};
